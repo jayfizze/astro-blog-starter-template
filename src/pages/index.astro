@@ -1,19 +1,4 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
----
-
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
----
 // src/pages/index.astro
 // Component Script (Server-side)
 const name = "Javon Phidd";
@@ -392,13 +377,3 @@ const capabilities = [
   .social-link:hover { color: var(--accent); }
   .copyright { color: #475569; font-size: 0.85rem; }
 </style>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
