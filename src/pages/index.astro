@@ -7,16 +7,16 @@ const email = "jphidd@phiddoutsourcing.com.jm";
 const location = "Tamarac, FL";
 
 const metrics = [
-  { value: 60, suffix: "%", label: "Performance Boost", desc: "Engineered workflows that drove a 60% increase in team performance within three months." },
-  { value: 150, suffix: "+", label: "Seat Scale Management", desc: "Directed daily operations for a massive international contact center, elevating productivity by 30%." },
-  { value: 17, suffix: "", label: "Years Experience", desc: "Comprehensive experience managing, optimizing, and scaling complex customer-focused teams." },
+  { value: 60, suffix: "%", label: "Performance Boost", desc: "Engineered workflows and sprint-based milestones that drove a 60% increase in team output within three months." },
+  { value: 150, suffix: "+", label: "Seat Scale Management", desc: "Directed daily lifecycle operations for a massive international contact center, elevating productivity by 30%." },
+  { value: 17, suffix: "", label: "Years Experience", desc: "Comprehensive history of leading cross-functional teams, executing high-stakes projects, and scaling operations." },
 ];
 
 const capabilities = [
-  { title: "Operations & P&L Management", desc: "Comprehensive experience overseeing daily workflows, meeting strict SLAs, and managing operational profitability." },
-  { title: "Data Analytics & KPI Tracking", desc: "Leveraging data analysis to uncover root causes, generate performance-specific reporting, and make data-driven decisions." },
-  { title: "IT Infrastructure Leadership", desc: "Deep technical background supervising IT service desks, deploying software standards, and resolving complex systems issues." },
-  { title: "Risk & Compliance Management", desc: "Specialized knowledge in navigating state/federal regulations, evaluating complex eligibility cases, and monitoring fraud prevention." },
+  { title: "Project Management & Methodology", desc: "Applying structured frameworks to define project scope, manage resources, mitigate risks, and ensure on-time delivery of complex organizational initiatives." },
+  { title: "Operations & P&L Management", desc: "Comprehensive experience overseeing daily workflows, alignment with strict corporate SLAs, and optimizing operational budgets and profitability." },
+  { title: "Data Analytics & KPI Tracking", desc: "Leveraging data-driven diagnostics to uncover operational bottlenecks, establish clear baselines, and design predictive performance reporting." },
+  { title: "Risk, Compliance & Governance", desc: "Specialized expertise navigating state and federal regulations, managing quality assurance parameters, and establishing proactive fraud-prevention frameworks." },
 ];
 ---
 
@@ -47,13 +47,13 @@ const capabilities = [
     <header class="hero">
       <div class="container">
         <p class="hero-subtitle">{title}</p>
-        <h1 class="hero-title">Driving Operational Excellence through Data, Leadership, and Innovation.</h1>
+        <h1 class="hero-title">Executing Strategic Projects and Delivering Operational Excellence.</h1>
         <p class="hero-lead">
-          I bridge the gap between technical strategy and human leadership to deliver measurable results. From implementing regional tracking systems to skyrocketing team performance, I transform operational challenges into streamlined, high-performing systems.
+          I bridge the gap between technical infrastructure, structured project execution, and human leadership. Leveraging certified methodologies, I transform chaotic legacy processes into predictable, high-performing systems that deliver visible bottom-line results.
         </p>
         <div class="hero-actions">
-          <a href="#contact" download class="btn btn-primary">Get In Touch</a>
-         </div>
+          <a href="#contact" class="btn btn-primary">Get In Touch</a>
+        </div>
       </div>
     </header>
 
@@ -62,14 +62,14 @@ const capabilities = [
       <div class="container grid-2">
         <div class="section-header">
           <h2 class="section-title">About Me</h2>
-          <p class="section-subtitle">The Intersection of Strategy and Execution</p>
+          <p class="section-subtitle">Where Process Planning Meets Active Execution</p>
         </div>
         <div class="about-content">
           <p>
-            Over nearly two decades, my career has spanned pivotal leadership roles—including serving as an <strong>IT Helpdesk Supervisor</strong>, <strong>Operations Manager</strong> for international brands, and my current role as an <strong>Eligibility Specialist Supervisor</strong> for the Florida Department of Children & Families.
+            Over a nearly two-decade career, I have thrived at the intersection of business operations and structured project management. My leadership path spans managing high-capacity international contact centers, steering complex IT helpdesk infrastructure, and guiding cross-functional compliance operations as an <strong>Eligibility Specialist Supervisor</strong> for the State of Florida.
           </p>
           <p>
-            My approach combines data-driven strategy with a deep understanding of human workflow management. Armed with certifications in <strong>Google Data Analytics</strong> and <strong>Google Project Management</strong>, I don't just manage teams—I analyze performance metrics to engineer solutions that cut through inefficiency and boost productivity.
+            I approach operations through a precise project management lens. Armed with professional credentials in <strong>Google Project Management</strong> and <strong>Google Data Analytics</strong>, I specialize in mapping out clear project life cycles, managing stakeholder expectations, eliminating resource waste, and building systemic accountability patterns.
           </p>
         </div>
       </div>
@@ -113,13 +113,13 @@ const capabilities = [
     <footer id="contact" class="footer">
       <div class="container">
         <h2 class="footer-title">Let's Connect</h2>
-        <p class="footer-lead">I am always open to discussing strategic operations, leadership opportunities, or technical consulting.</p>
+        <p class="footer-lead">I am always open to discussing strategic project lifecycles, operations leadership roles, or program transformations.</p>
         <div class="footer-details">
           <p><strong>Location:</strong> {location}</p>
           <p><strong>Email:</strong> <a href={`mailto:${email}`}>{email}</a></p>
         </div>
         <div class="footer-socials">
-          <a href="#" class="www.linkedin.com/in/jphidd">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/jphidd" target="_blank" class="social-link">LinkedIn</a>
         </div>
         <p class="copyright">&copy; {new Date().getFullYear()} {name}. All rights reserved.</p>
       </div>
@@ -132,22 +132,20 @@ const capabilities = [
         
         const startCounter = (counter) => {
           const target = parseInt(counter.getAttribute('data-target'), 10);
-          const duration = 1500; // 1.5 seconds animation
+          const duration = 1500; 
           const startTime = performance.now();
           
           const updateNumber = (currentTime) => {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            
-            // Ease out quad function for smooth stopping
             const easeProgress = progress * (2 - progress);
             
-            counter.innerText = Math.floor(easeProgress * target);
+            counter.innerText = Math.floor(easeProgress * target).toString();
             
             if (progress < 1) {
               requestAnimationFrame(updateNumber);
             } else {
-              counter.innerText = target;
+              counter.innerText = target.toString();
             }
           };
           
@@ -158,7 +156,7 @@ const capabilities = [
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               startCounter(entry.target);
-              observer.unobserve(entry.target); // Run animation once
+              observer.unobserve(entry.target); 
             }
           });
         }, { threshold: 0.2 });
@@ -166,13 +164,12 @@ const capabilities = [
         counters.forEach(counter => observer.observe(counter));
       };
 
-      // Runs on initial page load
       setupAnimatedNumbers();
     </script>
   </body>
 </html>
 
-<!-- Scoped Styles -->
+<!-- Scoped Styles (Kept intact from original layout specs) -->
 <style>
   :root {
     --bg-dark: #0f172a;
