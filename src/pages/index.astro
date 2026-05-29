@@ -6,6 +6,12 @@ const title = "Operations Director | Project Manager";
 const email = "jphidd@phiddoutsourcing.com.jm";
 const location = "Tamarac, FL";
 
+// --- SEO METADATA CONFIGURATION ---
+const siteUrl = "https://phiddoutsourcing.com.jm"; 
+const metaTitle = `${name} | ${title} - Operational Excellence`;
+const metaDescription = `Portfolio of Javon Phidd, an Operations Director and Project Manager based in ${location}. 17+ years of experience leading cross-functional teams, optimizing technical infrastructure, and scaling operational efficiency.`;
+const keywords = "Operations Director, Project Manager, Operational Excellence, Contact Center Management, Data Analytics, Javon Phidd, Tamarac FL Operations, Agile Leadership";
+
 const metrics = [
   { value: 60, suffix: "%", label: "Performance Boost", desc: "Engineered workflows and sprint-based milestones that drove a 60% increase in team output within three months." },
   { value: 150, suffix: "+", label: "Seat Scale Management", desc: "Directed daily lifecycle operations for a massive international contact center, elevating productivity by 30%." },
@@ -18,22 +24,71 @@ const capabilities = [
   { title: "Data Analytics & KPI Tracking", desc: "Leveraging data-driven diagnostics to uncover operational bottlenecks, establish clear baselines, and design predictive performance reporting." },
   { title: "Risk, Compliance & Governance", desc: "Specialized expertise navigating state and federal regulations, managing quality assurance parameters, and establishing proactive fraud-prevention frameworks." },
 ];
+
+// Structural JSON-LD Schema data for Google Rich Results
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": name,
+  "jobTitle": "Operations Director & Project Manager",
+  "url": siteUrl,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tamarac",
+    "addressRegion": "FL",
+    "addressCountry": "US"
+  },
+  "knowsAbout": [
+    "Operations Management",
+    "Project Management",
+    "Data Analytics",
+    "Risk Compliance",
+    "Agile Methodologies"
+  ]
+};
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{name} | {title}</title>
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Standard Primary SEO Tags -->
+    <title>{metaTitle}</title>
+    <meta name="title" content={metaTitle} />
+    <meta name="description" content={metaDescription} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- Open Graph / Facebook / LinkedIn Optimization -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:image" content={`${siteUrl}/og-image.jpg`} /> <!-- Place a preview image in public/og-image.jpg -->
+
+    <!-- Twitter Profile Preview Cards -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={siteUrl} />
+    <meta property="twitter:title" content={metaTitle} />
+    <meta property="twitter:description" content={metaDescription} />
+    <meta property="twitter:image" content={`${siteUrl}/og-image.jpg`} />
+
+    <!-- Structured JSON-LD Data Injection -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+
+    <!-- Google Font Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <!-- Navigation Bar -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main Navigation">
       <div class="nav-container">
-        <a href="#" class="nav-logo">{name}</a>
+        <a href="#" class="nav-logo" aria-label="Javon Phidd Home">{name}</a>
         <div class="nav-links">
           <a href="#about">About</a>
           <a href="#metrics">Impact</a>
@@ -58,59 +113,61 @@ const capabilities = [
     </header>
 
     <!-- About Section -->
-    <section id="about" class="about">
-      <div class="container grid-2">
-        <div class="section-header">
-          <h2 class="section-title">About Me</h2>
-          <p class="section-subtitle">Where Process Planning Meets Active Execution</p>
+    <main>
+      <section id="about" class="about" aria-labelledby="about-heading">
+        <div class="container grid-2">
+          <div class="section-header">
+            <h2 id="about-heading" class="section-title">About Me</h2>
+            <p class="section-subtitle">Where Process Planning Meets Active Execution</p>
+          </div>
+          <div class="about-content">
+            <p>
+              Over a nearly two-decade career, I have thrived at the intersection of business operations and structured project management. My leadership path spans managing high-capacity international contact centers, steering complex IT helpdesk infrastructure, and guiding cross-functional compliance operations as an <strong>Eligibility Specialist Supervisor</strong> for the State of Florida.
+            </p>
+            <p>
+              I approach operations through a precise project management lens. Armed with professional credentials in <strong>Google Project Management</strong> and <strong>Google Data Analytics</strong>, I specialize in mapping out clear project life cycles, managing stakeholder expectations, eliminating resource waste, and building systemic accountability patterns.
+            </p>
+          </div>
         </div>
-        <div class="about-content">
-          <p>
-            Over a nearly two-decade career, I have thrived at the intersection of business operations and structured project management. My leadership path spans managing high-capacity international contact centers, steering complex IT helpdesk infrastructure, and guiding cross-functional compliance operations as an <strong>Eligibility Specialist Supervisor</strong> for the State of Florida.
-          </p>
-          <p>
-            I approach operations through a precise project management lens. Armed with professional credentials in <strong>Google Project Management</strong> and <strong>Google Data Analytics</strong>, I specialize in mapping out clear project life cycles, managing stakeholder expectations, eliminating resource waste, and building systemic accountability patterns.
-          </p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Metrics Section -->
-    <section id="metrics" class="metrics">
-      <div class="container">
-        <h2 class="section-title centered">Impact by the Numbers</h2>
-        <div class="metrics-grid">
-          {metrics.map((item) => (
-            <div class="metric-card">
-              <div class="metric-value-container">
-                <span class="metric-number" data-target={item.value}>0</span>
-                <span class="metric-suffix">{item.suffix}</span>
+      <!-- Metrics Section -->
+      <section id="metrics" class="metrics" aria-labelledby="metrics-heading">
+        <div class="container">
+          <h2 id="metrics-heading" class="section-title centered">Impact by the Numbers</h2>
+          <div class="metrics-grid">
+            {metrics.map((item) => (
+              <div class="metric-card">
+                <div class="metric-value-container">
+                  <span class="metric-number" data-target={item.value}>0</span>
+                  <span class="metric-suffix">{item.suffix}</span>
+                </div>
+                <h3 class="metric-label">{item.label}</h3>
+                <p class="metric-desc">{item.desc}</p>
               </div>
-              <h3 class="metric-label">{item.label}</h3>
-              <p class="metric-desc">{item.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Capabilities Section -->
-    <section id="skills" class="skills">
-      <div class="container">
-        <h2 class="section-title centered">Core Capabilities</h2>
-        <div class="skills-grid">
-          {capabilities.map((tech) => (
-            <div class="skill-card">
-              <h3>{tech.title}</h3>
-              <p>{tech.desc}</p>
-            </div>
-          ))}
+      <!-- Capabilities Section -->
+      <section id="skills" class="skills" aria-labelledby="skills-heading">
+        <div class="container">
+          <h2 id="skills-heading" class="section-title centered">Core Capabilities</h2>
+          <div class="skills-grid">
+            {capabilities.map((tech) => (
+              <div class="skill-card">
+                <h3>{tech.title}</h3>
+                <p>{tech.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <!-- Footer / Contact Section -->
-    <footer id="contact" class="footer">
+    <footer id="contact" class="footer" aria-label="Footer and Contact Information">
       <div class="container">
         <h2 class="footer-title">Let's Connect</h2>
         <p class="footer-lead">I am always open to discussing strategic project lifecycles, operations leadership roles, or program transformations.</p>
@@ -119,7 +176,7 @@ const capabilities = [
           <p><strong>Email:</strong> <a href={`mailto:${email}`}>{email}</a></p>
         </div>
         <div class="footer-socials">
-          <a href="https://www.linkedin.com/in/jphidd" target="_blank" class="social-link">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/jphidd" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn Profile</a>
         </div>
         <p class="copyright">&copy; {new Date().getFullYear()} {name}. All rights reserved.</p>
       </div>
@@ -169,7 +226,7 @@ const capabilities = [
   </body>
 </html>
 
-<!-- Scoped Styles (Kept intact from original layout specs) -->
+<!-- Scoped Styles -->
 <style>
   :root {
     --bg-dark: #0f172a;
